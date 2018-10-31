@@ -5,6 +5,8 @@ polyglot:
  - java
  - javascript
  - ruby
+
+weight: 2
 ---
 
 Cucumber can be used to implement automated tests based on scenarios described in your Gherkin feature files.
@@ -12,7 +14,7 @@ Cucumber can be used to implement automated tests based on scenarios described i
 
 # Step Arguments
 
-In the example above Cucumber extracts the text `48` from the step, converts it to an `int`
+In the example given in [step definitions](/cucumber/step-definitions) Cucumber extracts the text `48` from the step, converts it to an `int`
 and passes it as an argument to the {{% stepdef-body %}}.
 
 The number of parameters in the {{% stepdef-body %}} has to match the number of {{% expression-parameter %}}s in the expression. (If there is a mismatch, Cucumber will throw an error).
@@ -270,7 +272,7 @@ After(function (scenario) {
 
 ```ruby
 After do |scenario|
-})
+end
 ```
 
 {{% /block %}}
@@ -772,6 +774,53 @@ import org.junit.runner.RunWith;
 public class RunCukesTest {
 }
 ```
+For example if you want to check whether all feature file steps has corresponding step definitions, you can specify it like this: 
+
+```java
+package mypackage;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(dryRun=true)
+public class RunCukesTest {
+}
+```
+The default option for `dryRun` is `false`.
+
+For example if you want console output from Cucumber in a readable format, you can specify it like this: 
+
+```java
+package mypackage;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(monochrome=true)
+public class RunCukesTest {
+}
+```
+The default option for `monochrome` is `false`.
+
+For example if you want to skip undefined steps from execution, you can specify it like this: 
+
+```java
+package mypackage;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(strict=false)
+public class RunCukesTest {
+}
+```
+The default option for `strict` is `false`.
 
 Usually, this class will be empty. You can, however, specify several JUnit rules.
 

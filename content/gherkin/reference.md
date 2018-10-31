@@ -39,10 +39,11 @@ Each line that isn't a blank line has to start with a Gherkin *keyword*, followe
 The primary keywords are:
 
 - `Feature`
-- `Example` (`Scenario` and `Scenario Outline` are synonyms)
+- `Example` (or `Scenario`)
 - `Given`, `When`, `Then`, `And`, `But`  (steps)
 - `Background`
-- `Combinations` (`Examples` is a synonym)
+- `Scenario Outline` (or `Scenario Template`)
+- `Examples`
 
 There are a few secondary keywords as well:
 
@@ -97,6 +98,8 @@ You can write anything you like, as long as no line starts with a keyword.
 
 This is a *concrete example* that *illustrates* a business rule. It consists of
 a list of [steps](#steps).
+
+The keyword `Scenario` is a synonym of the keyword `Example`.
 
 You can have as many steps as you like, but we recommend you keep the number at 3-5 per scenario.
 If they become longer than that, they lose their expressive power as specification and documentation.
@@ -284,6 +287,8 @@ Think about using higher-level steps, or splitting the `*.feature` file.
 The `Scenario Outline` keyword can be used to run the same `Scenario` multiple times,
 with different combinations of values.
 
+The keyword `Scenario Template` is a synonym of the keyword `Scenario Outline`.
+
 Copying and pasting scenarios to use different values quickly becomes tedious and repetitive:
 
 ```gherkin
@@ -315,7 +320,7 @@ Scenario Outline: eating
     |    20 |   5 |   15 |
 ```
 
-A `Scenario Outline` must contain an `Examples` section. Its steps are interpreted as a template
+A `Scenario Outline` must contain an `Examples` (or `Scenarios`) section. Its steps are interpreted as a template
 which is never directly run. Instead, the `Scenario Outline` is run *once for each row* in
 the `Examples` section beneath it (not counting the first header row).
 
@@ -373,7 +378,7 @@ The language you choose for Gherkin should be the same language your users and
 domain experts use when they talk about the domain. Translating between
 two languages should be avoided.
 
-This is why Gherkin has been translates to over 70 languages.
+This is why Gherkin has been translated to over 70 languages.
 
 Here is a Gherkin scenario written in Norwegian:
 
@@ -399,5 +404,8 @@ Some Cucumber implementations also let you set the default language in the
 configuration, so you don't need to place the `# language` header in every file.
 
 ## Gherkin Dialects
+In order to allow Gherkin to be written in a number of languages, the English keywords have also been translated. To improve readability and flow, some languages may have more than one translation for any given keyword.
+
+A list of the currently supported languages and their keywords can be found below.
 
 {{% gherkin-i18n-table %}}

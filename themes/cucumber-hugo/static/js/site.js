@@ -53,6 +53,8 @@ var showHideSelectors = [
   '.text-java',
   '.language-javascript',
   '.text-javascript',
+  '.language-kotlin',
+  '.text-kotlin',
   '.language-ruby',
   '.text-ruby',
 ]
@@ -92,6 +94,14 @@ ready(function() {
     var language = li.getAttribute('data-language')
     li.addEventListener('click', function () {
       showOnly(language)
+    })
+  })
+
+  each(document, '.panel.collapsible > a', function(a) {
+    var targetSelector = a.getAttribute('data-target');
+    a.addEventListener('click', function() {
+      var el = document.querySelector(targetSelector);
+      el.classList.toggle('collapsed');
     })
   })
 
